@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServiciosViewDlg" widgetVar="ServiciosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewServiciosTitle}">
+            <h:form id="ServiciosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{serviciosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewServiciosLabel_idServicios}"/>
+                        <h:outputText value="#{serviciosController.selected.idServicios}" title="#{bundle.ViewServiciosTitle_idServicios}"/>
+                        <h:outputText value="#{bundle.ViewServiciosLabel_nombre}"/>
+                        <h:outputText value="#{serviciosController.selected.nombre}" title="#{bundle.ViewServiciosTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewServiciosLabel_descripcion}"/>
+                        <h:outputText value="#{serviciosController.selected.descripcion}" title="#{bundle.ViewServiciosTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewServiciosLabel_programaFormacion}"/>
+                        <h:outputText value="#{serviciosController.selected.programaFormacion}" title="#{bundle.ViewServiciosTitle_programaFormacion}"/>
+                        <h:outputText value="#{bundle.ViewServiciosLabel_ficha}"/>
+                        <h:outputText value="#{serviciosController.selected.ficha}" title="#{bundle.ViewServiciosTitle_ficha}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ServiciosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

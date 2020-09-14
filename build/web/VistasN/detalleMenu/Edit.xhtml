@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleMenuEditDlg" widgetVar="DetalleMenuEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalleMenuTitle}">
+            <p:growl id="growleditarDetalleMenu"/>
+            <h:form id="DetalleMenuEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleMenuController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalleMenuLabel_idDetallmenu}" for="idDetallmenu" />
+                        <p:inputText id="idDetallmenu" value="#{detalleMenuController.selected.idDetallmenu}" title="#{bundle.EditDetalleMenuTitle_idDetallmenu}" required="true" requiredMessage="#{bundle.EditDetalleMenuRequiredMessage_idDetallmenu}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleMenuLabel_idMenu}" for="idMenu" />
+                        <p:selectOneMenu id="idMenu" value="#{detalleMenuController.selected.idMenu}" required="true" requiredMessage="#{bundle.EditDetalleMenuRequiredMessage_idMenu}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{menuController.itemsAvailableSelectOne}"
+                                           var="idMenuItem"
+                                           itemValue="#{idMenuItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDetalleMenuLabel_idEventos}" for="idEventos" />
+                        <p:selectOneMenu id="idEventos" value="#{detalleMenuController.selected.idEventos}" required="true" requiredMessage="#{bundle.EditDetalleMenuRequiredMessage_idEventos}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{eventosController.itemsAvailableSelectOne}"
+                                           var="idEventosItem"
+                                           itemValue="#{idEventosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleMenuController.update}" value="#{bundle.Save}" update="display,:DetalleMenuListForm:datalist,growleditarDetalleMenu" oncomplete="handleSubmit(args, 'DetalleMenuEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleMenuEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

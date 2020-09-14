@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleServicioCreateDlg" widgetVar="DetalleServicioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleServicioTitle}">
+            <p:growl id="growlcrearDetalleServicio"/>
+            <h:form id="DetalleServicioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleServicioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleServicioLabel_idDetallServ}" for="idDetallServ" />
+                        <p:inputText id="idDetallServ" value="#{detalleServicioController.selected.idDetallServ}" title="#{bundle.CreateDetalleServicioTitle_idDetallServ}" required="true" requiredMessage="#{bundle.CreateDetalleServicioRequiredMessage_idDetallServ}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleServicioLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleServicioController.selected.cantidad}" title="#{bundle.CreateDetalleServicioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetalleServicioRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleServicioLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{detalleServicioController.selected.precio}" title="#{bundle.CreateDetalleServicioTitle_precio}" required="true" requiredMessage="#{bundle.CreateDetalleServicioRequiredMessage_precio}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleServicioLabel_eventosid}" for="eventosid" />
+                        <p:selectOneMenu id="eventosid" value="#{detalleServicioController.selected.eventosid}" required="true" requiredMessage="#{bundle.EditDetalleServicioRequiredMessage_eventosid}">
+                            <f:selectItems value="#{eventosController.itemsAvailableSelectOne}"
+                                           var="eventosidItem"
+                                           itemValue="#{eventosidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleServicioLabel_servicosid}" for="servicosid" />
+                        <p:selectOneMenu id="servicosid" value="#{detalleServicioController.selected.servicosid}" required="true" requiredMessage="#{bundle.EditDetalleServicioRequiredMessage_servicosid}">
+                            <f:selectItems value="#{serviciosController.itemsAvailableSelectOne}"
+                                           var="servicosidItem"
+                                           itemValue="#{servicosidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleServicioController.create}" value="#{bundle.Save}" update="display,:DetalleServicioListForm:datalist,growlcrearDetalleServicio" oncomplete="handleSubmit(args,'DetalleServicioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleServicioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

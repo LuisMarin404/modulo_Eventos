@@ -1,0 +1,186 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-ago-2020, 23:09:37
+    Author     : DaniloCi
+
+
+Mod DaniloCi
+*/
+
+.Titulo {
+    align-content: center;
+    color: black;
+    font-size: 45px;
+}
+.logosena {
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Logos/senalogo.svg) !important;
+    background-size:cover !important;
+    width: 48px !important;
+    height: 48px !important ;
+    align-content: center;
+}
+
+.logokaffa{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Logos/Titulo.svg) !important;
+    background-size: cover;
+    width: 160px !important;
+    height: 45px !important ;
+    align-self: center;
+    alignment-adjust: central;
+    text-align: center;
+}
+
+.iconoVentas{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/Cajaregistradora.svg) !important;
+    background-size:cover !important;
+    width: 25px !important;
+    height: 25px !important ;
+    align-content: center;
+    margin: 6px;
+}
+
+
+.iconoDevolucion{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/devolucion.svg) !important;
+    background-size:cover !important;
+    width: 25px !important;
+    height: 25px !important ;
+    align-content: center;
+    margin: 6px;
+}
+
+
+.iconoManteniento{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/mantenimiento.svg) !important;
+    background-size:cover !important;
+    width: 25px !important;
+    height: 25px !important ;
+    align-content: center;
+    margin: 6px;
+}
+
+
+.iconogestioncontable{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/Gestion.svg) !important;
+    background-size:cover !important;
+    width: 25px !important;
+    height: 25px !important ;
+    align-content: center;
+    margin: 6px;
+}
+
+
+
+
+
+.ui-menu .ui-menuitem-link {
+    line-height: 35px;
+
+}
+
+
+DanilociNoScroll {
+    overflow-x: hidden !important; 
+    overflow-y: hidden !important;
+}
+
+
+.noscroll {
+    overflow-y: hidden !important;
+}
+
+.Tamheader{
+    height: 120px !important;
+}
+
+
+.ui-widget-header {
+    color: #000000 !important;
+    font-weight: bold;
+    font-family: 'Enriqueta', arial, serif; 
+    line-height: 1.1; 
+    margin: 0 0 10px; 
+    font-size: 12px; 
+    font-weight: bold;
+    text-shadow: 1px 1px 4px white, 0 0 0.8em white, 0 0 0.2em white;
+    color: white;
+}
+
+.ui-widget .ui-widget {
+    font-size: 13px !important;
+}
+
+.iconoUsuario{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/scalable/apps/personal.svg) !important;
+    background-size:cover !important;
+    width: 62px !important;
+    height: 62px !important ;
+    align-content: center;
+    margin: auto;
+}
+
+.iconocerrarsesion{
+    background:  url(/ContaYFinanzasFN/faces/javax.faces.resource/images/Iconos/scalable/actions/exit.svg) !important;
+    background-size:cover !important;
+    width: 16px !important;
+    height: 16px !important ;
+    align-content: center;
+    margin: auto;
+}
+
+.ui-widget {
+    font-size: 13px;
+}
+
+.ui-clock {
+    padding: 1px 1px;
+    margin: auto !important;
+    padding-top: 1px;
+}
+    .ui-analog-clock {
+        width: 80px;
+    }
+    
+    .tamanopanelesdelheader{
+        
+        min-height: 60px;
+    }
+    
+        .tamanopanelInfousu{
+        
+        width: 235px;
+        min-width: 42px;
+    }
+    
+    
+        .ui-sticky {
+        top: 70px !important;
+        
+    }
+    @media (max-width: 960px) {
+        .ui-sticky {
+            top: 110px !important;
+        }
+    }
+    
+    
+    
+.p-col-1, .p-col-2, .p-col-3, .p-col-4, .p-col-5, .p-col-6, .p-col-7, .p-col-8, .p-col-9, .p-col-10, .p-col-11, .p-col-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 1px;
+}
+
+
+
+.ui-shadow {
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+}
+

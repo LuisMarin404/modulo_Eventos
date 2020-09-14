@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CootizacionCreateDlg" widgetVar="CootizacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCootizacionTitle}">
+            <p:growl id="growlcrearCootizacion"/>
+            <h:form id="CootizacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cootizacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCootizacionLabel_idCotizacion}" for="idCotizacion" />
+                        <p:inputText id="idCotizacion" value="#{cootizacionController.selected.idCotizacion}" title="#{bundle.CreateCootizacionTitle_idCotizacion}" required="true" requiredMessage="#{bundle.CreateCootizacionRequiredMessage_idCotizacion}"/>
+                        <p:outputLabel value="#{bundle.CreateCootizacionLabel_reservaid}" for="reservaid" />
+                        <p:selectOneMenu id="reservaid" value="#{cootizacionController.selected.reservaid}" required="true" requiredMessage="#{bundle.EditCootizacionRequiredMessage_reservaid}">
+                            <f:selectItems value="#{reservaController.itemsAvailableSelectOne}"
+                                           var="reservaidItem"
+                                           itemValue="#{reservaidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCootizacionLabel_eventosid}" for="eventosid" />
+                        <p:selectOneMenu id="eventosid" value="#{cootizacionController.selected.eventosid}" required="true" requiredMessage="#{bundle.EditCootizacionRequiredMessage_eventosid}">
+                            <f:selectItems value="#{eventosController.itemsAvailableSelectOne}"
+                                           var="eventosidItem"
+                                           itemValue="#{eventosidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cootizacionController.create}" value="#{bundle.Save}" update="display,:CootizacionListForm:datalist,growlcrearCootizacion" oncomplete="handleSubmit(args,'CootizacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CootizacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleProductoCreateDlg" widgetVar="DetalleProductoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleProductoTitle}">
+            <p:growl id="growlcrearDetalleProducto"/>
+            <h:form id="DetalleProductoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleProductoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleProductoLabel_idDetallprod}" for="idDetallprod" />
+                        <p:inputText id="idDetallprod" value="#{detalleProductoController.selected.idDetallprod}" title="#{bundle.CreateDetalleProductoTitle_idDetallprod}" required="true" requiredMessage="#{bundle.CreateDetalleProductoRequiredMessage_idDetallprod}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleProductoLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleProductoController.selected.cantidad}" title="#{bundle.CreateDetalleProductoTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetalleProductoRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleProductoLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{detalleProductoController.selected.precio}" title="#{bundle.CreateDetalleProductoTitle_precio}" required="true" requiredMessage="#{bundle.CreateDetalleProductoRequiredMessage_precio}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleProductoLabel_eventoid}" for="eventoid" />
+                        <p:selectOneMenu id="eventoid" value="#{detalleProductoController.selected.eventoid}" required="true" requiredMessage="#{bundle.EditDetalleProductoRequiredMessage_eventoid}">
+                            <f:selectItems value="#{eventosController.itemsAvailableSelectOne}"
+                                           var="eventoidItem"
+                                           itemValue="#{eventoidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleProductoLabel_productoid}" for="productoid" />
+                        <p:selectOneMenu id="productoid" value="#{detalleProductoController.selected.productoid}" required="true" requiredMessage="#{bundle.EditDetalleProductoRequiredMessage_productoid}">
+                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"
+                                           var="productoidItem"
+                                           itemValue="#{productoidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleProductoController.create}" value="#{bundle.Save}" update="display,:DetalleProductoListForm:datalist,growlcrearDetalleProducto" oncomplete="handleSubmit(args,'DetalleProductoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleProductoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

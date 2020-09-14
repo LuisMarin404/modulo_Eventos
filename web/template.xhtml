@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>#{bundle.AppName}</title>
+            </f:facet>
+            <ui:insert name="head" />
+            <h:outputStylesheet library="css" name="FondosIConosyotros.css"/>
+            <h:outputStylesheet library="css" name="primeflex.css" />
+            <h:outputStylesheet library="css" name="jsfcrud.css"/>
+            <h:outputScript library="js" name="jsfcrud.js"/>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/primeflex.css" />
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/FondosIConosyotros.css"
+                  />
+        </h:head>
+
+        <h:body>
+
+            <!-- *********************Header Logos y etc*************-->
+            <div class="p-col-12">
+                <p:panel>
+                    <p:panel class="tamanopanelesdelheader" >
+                        <h1 style="text-align: center; color: #000000; font-size: 40px">Eventos</h1>
+                    </p:panel>
+                </p:panel>
+            </div>    
+            <!--**************************************************************************************************-->
+
+            <div class="p-col-12" >
+                <p:panel id="Barram">
+                    <ui:insert name="Menu">
+                    </ui:insert>
+                </p:panel>
+            </div>
+            <p:sticky target="Barram" />
+
+
+
+            <!--**********************************************Panel izquierdo auxiliar***********-->
+            <div class="p-col-12">
+                <p:panel>
+                    <div class="p-grid">
+                        <div class="p-col-fixed">
+                            <p:panel  class="tamanopanelInfousu" toggleable="true" header="Información" toggleOrientation="horizontal" style="text-align: center" id="panelinformacion">
+                                <h:form>
+                                    <p:panel style="width: fit-content; margin: auto">
+                                        <div class="iconoUsuario"/>
+                                    </p:panel>
+                                    <p:panelMenu style="width:235px,margin:auto;">
+                                        <p:submenu label="Información">
+                                            <p:menuitem value="Bienvenido: " action="#{menuView.save}" icon="pi pi-save" />
+                                            <p:menuitem value="_______" action="#{menuView.update}"  icon="pi pi-refresh" />
+                                        </p:submenu>
+                                        <p:submenu label="Información de conexión">
+                                            <p:menuitem value="______" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                                        </p:submenu>
+                                    </p:panelMenu>
+                                </h:form>
+                            </p:panel>
+                        </div>
+                        <!--************************Contenido de la pagina************************-->
+                        <div class="p-col">
+                            <p:panel header="Reserva y Cotizacion de eventos" style="text-align: center; min-height: 70vh !important ;"  >
+                                <ui:insert name="Otro">
+
+                                </ui:insert>
+
+
+                            </p:panel>
+                        </div>
+                    </div>
+                    <!--************************Contenido de la pagina************************-->
+
+                </p:panel>
+            </div>
+
+            <!-- **********************************************Panel izquierdo auxiliar*************************-->
+
+            <div class="p-col-12" >
+                <p:panel style="min-height: 60px; text-align:  center">
+
+                </p:panel>
+            </div>
+
+        </h:body>
+
+
+    </f:view>
+</html>
+

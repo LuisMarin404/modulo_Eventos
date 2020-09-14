@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReservaCreateDlg" widgetVar="ReservaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReservaTitle}">
+            <p:growl id="growlcrearReserva"/>
+            <h:form id="ReservaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reservaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReservaLabel_idReserva}" for="idReserva" />
+                        <p:inputText id="idReserva" value="#{reservaController.selected.idReserva}" title="#{bundle.CreateReservaTitle_idReserva}" required="true" requiredMessage="#{bundle.CreateReservaRequiredMessage_idReserva}"/>
+                        <p:outputLabel value="#{bundle.CreateReservaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{reservaController.selected.fecha}" title="#{bundle.EditReservaTitle_fecha}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReservaLabel_fechaLimite}" for="fechaLimite" />
+                        <p:inputText id="fechaLimite" value="#{reservaController.selected.fechaLimite}" title="#{bundle.CreateReservaTitle_fechaLimite}" required="true" requiredMessage="#{bundle.CreateReservaRequiredMessage_fechaLimite}"/>
+                        <p:outputLabel value="#{bundle.CreateReservaLabel_clienteid}" for="clienteid" />
+                        <p:selectOneMenu id="clienteid" value="#{reservaController.selected.clienteid}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_clienteid}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="clienteidItem"
+                                           itemValue="#{clienteidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReservaLabel_recepcionid}" for="recepcionid" />
+                        <p:selectOneMenu id="recepcionid" value="#{reservaController.selected.recepcionid}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_recepcionid}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="recepcionidItem"
+                                           itemValue="#{recepcionidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reservaController.create}" value="#{bundle.Save}" update="display,:ReservaListForm:datalist,growlcrearReserva" oncomplete="handleSubmit(args,'ReservaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReservaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

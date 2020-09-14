@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleMenuViewDlg" widgetVar="DetalleMenuViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDetalleMenuTitle}">
+            <h:form id="DetalleMenuViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleMenuController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDetalleMenuLabel_idDetallmenu}"/>
+                        <h:outputText value="#{detalleMenuController.selected.idDetallmenu}" title="#{bundle.ViewDetalleMenuTitle_idDetallmenu}"/>
+                        <h:outputText value="#{bundle.ViewDetalleMenuLabel_idMenu}"/>
+                        <h:outputText value="#{detalleMenuController.selected.idMenu}" title="#{bundle.ViewDetalleMenuTitle_idMenu}"/>
+                        <h:outputText value="#{bundle.ViewDetalleMenuLabel_idEventos}"/>
+                        <h:outputText value="#{detalleMenuController.selected.idEventos}" title="#{bundle.ViewDetalleMenuTitle_idEventos}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DetalleMenuViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

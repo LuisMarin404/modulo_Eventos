@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LugarCreateDlg" widgetVar="LugarCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLugarTitle}">
+            <p:growl id="growlcrearLugar"/>
+            <h:form id="LugarCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lugarController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLugarLabel_idLugar}" for="idLugar" />
+                        <p:inputText id="idLugar" value="#{lugarController.selected.idLugar}" title="#{bundle.CreateLugarTitle_idLugar}" required="true" requiredMessage="#{bundle.CreateLugarRequiredMessage_idLugar}"/>
+                        <p:outputLabel value="#{bundle.CreateLugarLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{lugarController.selected.nombre}" title="#{bundle.CreateLugarTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateLugarLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{lugarController.selected.direccion}" title="#{bundle.CreateLugarTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateLugarLabel_disponibilidad}" for="disponibilidad" />
+                        <p:selectBooleanCheckbox id="disponibilidad" value="#{lugarController.selected.disponibilidad}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{lugarController.create}" value="#{bundle.Save}" update="display,:LugarListForm:datalist,growlcrearLugar" oncomplete="handleSubmit(args,'LugarCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LugarCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
